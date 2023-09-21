@@ -32,7 +32,7 @@ To use this program you need the following:
 
 5. **Keycloak 22.0.3** (Latest version at September 18th, 2023): You can download the keycloak server by [this link](https://www.keycloak.org/downloads).
 
-6. falta postgres
+6. **PostgreSQL with PgAdmin:** you can download to install PostgreSQL and pgAdmin for the database manage official website
 
 ## Usage
 
