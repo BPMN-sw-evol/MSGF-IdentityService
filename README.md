@@ -61,11 +61,15 @@ To use the program you must do:
     http-port=9090
    ```
 
-4. Now run the program on spring boot running on port 8080 with the help of IntelliJ IDEA.
+4. Run keycloak server (development mode) with:
+     ```
+     .\kc.bat start-dev
+     ```
+5. Now run the program on spring boot running on port 8080 with the help of IntelliJ IDEA.
 
-5. When you are running the keycloak server (port 9090) and the Spring Boot application (port 8080) you can already manage the realms, users and roles. If you need help to create realms, users and roles you can be guided by [this video](https://youtu.be/zR3igUft1KA?t=443) between minute 7:23 and 29:44.
+6. When you are running the keycloak server (port 9090) and the Spring Boot application (port 8080) you can already manage the realms, users and roles. If you need help to create realms, users and roles you can be guided by [this video](https://youtu.be/zR3igUft1KA?t=443) between minute 7:23 and 29:44.
 
-6. To communicate both services (keycloak and spring boot) you can use these endpoints:
+7. To communicate both services (keycloak and spring boot) you can use these endpoints:
     - Get a new JWT (Json Web Token):
         ```
         http://localhost:9090/realms/<YOU_REALM>/protocol/openid-connect/token
