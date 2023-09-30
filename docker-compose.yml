@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  msgf-identity-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9002:9002"
+    depends_on:
+      - identity-service-db
+    environment:
+      # Configuración para tu aplicación Spring Boot
+      SPRING_DATASOURCE_URL: jdbc:postgresql://identity-service-db:5432/identity-service-db
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+
+  identity-service-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: identity-service-db
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0.3
+    ports:
+      - "9001:8080"
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    depends_on:
+      - identity-service-db
+    command: ["start-dev"]
+
